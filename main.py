@@ -19,4 +19,4 @@ async def hello_world():  # we need to work asynchronous with web application
 # you can see all libraries that you are using with running "pip freeze" command in terminal
 # if it didn't fix your problem, try running this in terminal: pip install "fastapi[standard]"
 # run: uvicorn main:app --reload or run: fastapi run main.py
-# then, open 127.0.0.1:8000 in the browser, check 127.0.0.1:8000/hello
+# then, open 127.0.0.1:8000 in the browser, check 127.0.0.1:8000/hell
