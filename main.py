@@ -10,7 +10,7 @@ app = FastAPI()  # created an object from FastAPI class
 # but in 127.0.0.1.800/hello, you will see {"message": "Hello World"} message
 async def hello_world():  # we need to work asynchronous with web application
     # but via FastAPI, without "async" word, it will run without any problem
-    return {"message": "Hello World"}  # dictionary
+    return {"message": "Hello World"}  # dictionary => key, value => good for JSON format
 
 # at console, run: uvicorn main:app --reload
 # uvicorn: run the server via unicorn
@@ -19,4 +19,15 @@ async def hello_world():  # we need to work asynchronous with web application
 # you can see all libraries that you are using with running "pip freeze" command in terminal
 # if it didn't fix your problem, try running this in terminal: pip install "fastapi[standard]"
 # run: uvicorn main:app --reload or run: fastapi run main.py
-# then, open 127.0.0.1:8000 in the browser, check 127.0.0.1:8000/hell
+# then, open 127.0.0.1:8000 in the browser, check 127.0.0.1:8000/hello
+
+'''
+CRUD: Create (POST), Read (GET), Update (PUT), Delete (DELETE)
+GET :   the query string (name/value pairs) is sent in the URL of a GET request
+        requests can remain in browser history
+        read from the server
+POST:   The data sent to the server with POST is stored in the request body of the HTTP request
+        requests do not remain in browser history
+        better and reliable for bigger datas
+        send to the server
+'''
