@@ -44,9 +44,10 @@ POST:   The data sent to the server with POST is stored in the request body of t
         send to the server
 '''
 
-@app.get("/courses")  # if you write "/hello", in 127.0.0.1:8000 you will see Not Found! message
-# but in 127.0.0.1.800/hello, you will see {"message": "Hello World"} message
-async def hello_world():  # we need to work asynchronous with web application
-    # but via FastAPI, without "async" word, it will run without any problem
-    return courses_db  # dictionary => key, value => good for JSON format
 
+@app.get("/courses") # you can also check on 127.0.0.1:800/docs
+async def get_all_courses():
+    return courses_db
+
+# in 127.0.0.1:800/docs, Code: 200's mean is there is not any problem, Code: 404 is error
+# these Codes are HTTP codes
