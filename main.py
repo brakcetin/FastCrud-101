@@ -51,6 +51,7 @@ async def get_all_courses():
 
 
 # in 127.0.0.1:800/docs, Code: 200's mean is there is not any problem, Code: 404 is error
+# Code: 500's mean is there is an error in the code
 # these Codes are HTTP codes
 
 # PATH
@@ -60,4 +61,29 @@ async def get_course(course_title: str):
         if course.get('title').casefold() == course_title.casefold():  # casefold(): handling case sensitivity
             return course
 # 127.0.0.1:800/courses/java = working
+# 127.0.0.1:800/courses/scala = null
+
+# this function is not using
+@app.get("/courses/{course_id}")  # creating dynamic titles
+async def get_course_by_id(course_id: str):  # functions' names can be same
+    for course in courses_db:
+        if course.get('id') == course_id:  # you cannot use casefold() for int
+            return course
+
+
+# 127.0.0.1:800/courses/1 = null
+# 127.0.0.1:800/courses/3 = null => because of same paths for get_course and get_course_by_id
+# Whichever one is written first, it will accept it (get_course is written first)
+# you can add another path
+# 127.0.0.1:800/courses/java = working
+# 127.0.0.1:800/courses/scala = null
+
+@app.get("/courses/byid/{course_id}")  # creating dynamic titles
+async def get_course_by_id(course_id: int):  # functions' names can be same
+    for course in courses_db:
+        if course.get('id') == course_id:  # you cannot use casefold() for int
+            return course
+# 127.0.0.1:800/courses/1 = working
+# 127.0.0.1:800/courses/3 = working
+# 127.0.0.1:800/courses/java = null
 # 127.0.0.1:800/courses/scala = null
