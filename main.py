@@ -45,9 +45,19 @@ POST:   The data sent to the server with POST is stored in the request body of t
 '''
 
 
-@app.get("/courses") # you can also check on 127.0.0.1:800/docs
+@app.get("/courses")  # you can also check on 127.0.0.1:800/docs
 async def get_all_courses():
     return courses_db
 
+
 # in 127.0.0.1:800/docs, Code: 200's mean is there is not any problem, Code: 404 is error
 # these Codes are HTTP codes
+
+# PATH
+@app.get("/courses/{course_title}")  # creating dynamic titles
+async def get_course(course_title: str):
+    for course in courses_db:
+        if course.get('title').casefold() == course_title.casefold():  # casefold(): handling case sensitivity
+            return course
+# 127.0.0.1:800/courses/java = working
+# 127.0.0.1:800/courses/scala = null
